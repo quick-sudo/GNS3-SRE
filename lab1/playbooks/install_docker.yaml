@@ -1,0 +1,25 @@
+---
+- name: install docker
+  hosts: linux_server
+  gather_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: install curl
+      apt:
+        name: curl
+        state: present
+        
+    - name: download docker installation script
+      command: curl -fsSL https://get.docker.com -o get-docker.sh
+      
+    - name: install docker
+      command: sh ./get-docker.sh
+      
+    - name: remove installation script
+      command: rm ./get-docker.sh
+      
+    - name: install docker compose
+      apt:
+        name: docker-compose-plugin
+        state: present
