@@ -1,11 +1,11 @@
 ---
-- name: Deploy monitoring stack
+- name: Deploy Node Exporter on target server
   hosts: linux_server
   gather_facts: no
   become: yes
   become_method: sudo
   tasks:
-    - name: Start Node Exporter
+    - name: Run Node Exporter container
       docker_container:
         name: node-exporter
         image: prom/node-exporter
@@ -13,22 +13,22 @@
           - "9100:9100"
         state: started
         restart_policy: always
-        
-    - name: Start Prometheus
+
+- name: Deploy monitoring stack on localhost
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Run Prometheus container
       docker_container:
         name: prometheus
         image: prom/prometheus
         ports:
           - "9090:9090"
         volumes:
-          - "/home/usr/prometheus.yml:/etc/prometheus/prometheus.yml"
+          - "/home/user/SRE-lab/configs/prometheus.yml:/etc/prometheus/prometheus.yml"
         state: started
         restart_policy: always
 
-- name: Deploy Grafana
-  hosts: localhost
-  connection: local
-  tasks:
     - name: start Grafana
       docker_container:
         name: grafana

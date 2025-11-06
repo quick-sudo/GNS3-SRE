@@ -30,11 +30,11 @@ Managed Node (управляемый узел) - это конечная точ�
    sudo visudo 
    user_name ALL=(ALL) NOPASSWD: ALL
 5) Необходимо установить Docker на Managed Node. Для этого требуется запустить плейбук install_docker.yaml (Для установки Docker на Control Node, можно воспользоватся теми же коммандами, что и для Managed Node).
-6) На Managed Node создать prometheus.yaml - файл конфигурации (в данном примере он находится в /home/user_name/prometheus.yml)
+6) На Control Node создать prometheus.yaml - файл конфигурации (в данном примере он находится в SRE-lab/configs/)
 7) Затем необходимо развернуть сбор метрик. Для этого требуется запустить плейбук deploy_metrics_collection.yaml
 
    В терминале должно быть что-то подобное:
-   <img width="1178" height="631" alt="Image" src="https://github.com/user-attachments/assets/0a44d60f-c1aa-43a6-afb2-f4af89aae84a" />
+   <img width="1202" height="619" alt="Image" src="https://github.com/user-attachments/assets/64210370-0f6b-4c7a-a887-b162005c5e71" />
 
 8) В браузере необходимо открыть localhost:3000, после чего будет доступена страница логина Grafana:
    <img width="1164" height="977" alt="Image" src="https://github.com/user-attachments/assets/d6fa20b6-5e23-4d53-ac81-25d6ddd68e12" />
@@ -48,7 +48,7 @@ Managed Node (управляемый узел) - это конечная точ�
    <img width="1233" height="615" alt="Image" src="https://github.com/user-attachments/assets/e5f4b2d4-86f8-4a01-b444-2f4aea14d0c6" />
 
    Далее требуется заполнить настройки (имя и url):
-   <img width="1232" height="534" alt="Image" src="https://github.com/user-attachments/assets/cb18894b-c1f4-483d-b719-b8515573c1e5" />
+   <img width="721" height="421" alt="Image" src="https://github.com/user-attachments/assets/f83fefea-a978-403d-bee6-f4ac1b286d08" />
 
    Затем нажать "Save and test" после чего должно появится сообщение "Successfully queried the Prometheus API".
    <img width="1241" height="259" alt="Image" src="https://github.com/user-attachments/assets/8dd9a5c8-41c5-444c-91b9-b2697153af3f" />
