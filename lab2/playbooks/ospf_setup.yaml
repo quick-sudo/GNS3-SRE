@@ -1,0 +1,19 @@
+---
+- name: Configure OSPF on routers
+  hosts: cisco_routers
+  gather_facts: false
+  tasks:
+    - name: Enable OSPF process
+      cisco.ios.ios_config:
+        lines:
+          - "router ospf 1"
+        parents: []
+        
+    - name: Configure OSPF networks
+      cisco.ios.ios_config:
+        lines:
+          - "network 192.168.50.0 0.0.0.255 area 0"
+          - "network 10.0.0.0 0.0.0.255 area 0" 
+          - "network 20.0.0.0 0.0.0.255 area 0"  
+          - "network 30.0.0.0 0.0.0.255 area 0"
+        parents: ["router ospf 1"]

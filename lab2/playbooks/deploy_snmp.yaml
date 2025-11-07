@@ -1,0 +1,32 @@
+- name: Deploy monitoring stack on localhost
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Run Prometheus container
+      docker_container:
+        name: prometheus
+        image: prom/prometheus
+        ports:
+          - "9090:9090"
+        volumes:
+          - "/home/user/SRE-lab/configs/prometheus.yaml:/etc/prometheus/prometheus.yaml"
+        state: started
+        restart_policy: always
+
+    - name: Start SNMP Exporter
+      docker_container:
+        name: snmp-exporter
+        image: prom/snmp-exporter
+        ports:
+          - "9116:9116"
+        state: started
+        restart_policy: always
+
+    - name: Start Grafana
+      docker_container:
+        name: grafana
+        image: grafana/grafana
+        ports:
+          - "3000:3000"
+        state: started
+        restart_policy: always
