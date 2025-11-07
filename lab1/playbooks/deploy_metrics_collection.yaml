@@ -25,7 +25,7 @@
         ports:
           - "9090:9090"
         volumes:
-          - "/home/user/SRE-lab/configs/prometheus.yml:/etc/prometheus/prometheus.yml"
+          - "/home/user_name/SRE-lab/configs/prometheus.yml:/etc/prometheus/prometheus.yml"
         state: started
         restart_policy: always
 
