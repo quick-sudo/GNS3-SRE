@@ -14,6 +14,6 @@
         lines:
           - "network 192.168.50.0 0.0.0.255 area 0"
           - "network 10.0.0.0 0.0.0.255 area 0" 
-          - "network 20.0.0.0 0.0.0.255 area 0"  
-          - "network 30.0.0.0 0.0.0.255 area 0"
+          - "network 15.0.0.0 0.0.0.255 area 0"  
+          - "network 20.0.0.0 0.0.0.255 area 0"
         parents: ["router ospf 1"]
